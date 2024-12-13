@@ -1,25 +1,24 @@
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/components/ui/card";
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
 import {
   Table,
   TableBody,
@@ -27,11 +26,18 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
-import { Download, Eye, Filter, MoreHorizontal, Plus, Upload } from "lucide-react"
-import { useState } from "react"
-
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import {
+  Download,
+  Eye,
+  Filter,
+  MoreHorizontal,
+  Plus,
+  Upload,
+} from "lucide-react";
+import { useState } from "react";
+import Image from "next/image";
 
 const transactionData = [
   {
@@ -92,7 +98,6 @@ const transactionData = [
   },
 ];
 
-
 const TransactionsView = () => {
   const [transactions, setTransactions] = useState(transactionData);
 
@@ -124,7 +129,7 @@ const TransactionsView = () => {
       </CardHeader>
       <CardContent>
         <div className="mb-6">
-          <h3 className="font-semibold mb-3">Today's Transactions</h3>
+          <h3 className="font-semibold mb-3">Today&#39;s Transactions</h3>
           <Table>
             <TableHeader>
               <TableRow>
@@ -149,16 +154,15 @@ const TransactionsView = () => {
                     <TableCell>{transaction.time}</TableCell>
                     <TableCell>{transaction.description}</TableCell>
                     <TableCell>
-                      <Badge variant="outline">
-                        {transaction.category}
-                      </Badge>
+                      <Badge variant="outline">{transaction.category}</Badge>
                     </TableCell>
                     <TableCell>
                       <div className="flex items-center">
                         {transaction.paymentMethod === "GPay" && (
-                          <img
+                          <Image
                             src="/gpay-icon.png"
                             className="w-4 h-4 mr-2"
+                            alt={""}
                           />
                         )}
                         {transaction.paymentMethod}
@@ -193,52 +197,35 @@ const TransactionsView = () => {
                         </DialogTrigger>
                         <DialogContent className="max-w-2xl">
                           <DialogHeader>
-                            <DialogTitle>
-                              Transaction Details
-                            </DialogTitle>
+                            <DialogTitle>Transaction Details</DialogTitle>
                           </DialogHeader>
                           <div className="grid grid-cols-2 gap-4">
                             <div>
-                              <h4 className="font-semibold">
-                                Basic Info
-                              </h4>
+                              <h4 className="font-semibold">Basic Info</h4>
                               <div className="mt-2 space-y-2">
                                 <div>Date: {transaction.date}</div>
                                 <div>Time: {transaction.time}</div>
                                 <div>
                                   Amount: $
-                                  {Math.abs(transaction.amount).toFixed(
-                                    2
-                                  )}
+                                  {Math.abs(transaction.amount).toFixed(2)}
                                 </div>
                                 <div>Status: {transaction.status}</div>
                               </div>
                             </div>
                             <div>
-                              <h4 className="font-semibold">
-                                Payment Details
-                              </h4>
+                              <h4 className="font-semibold">Payment Details</h4>
                               <div className="mt-2 space-y-2">
+                                <div>Method: {transaction.paymentMethod}</div>
                                 <div>
-                                  Method: {transaction.paymentMethod}
+                                  Reference ID: {transaction.referenceId}
                                 </div>
-                                <div>
-                                  Reference ID:{" "}
-                                  {transaction.referenceId}
-                                </div>
-                                <div>
-                                  Recipient: {transaction.recipient}
-                                </div>
-                                <div>
-                                  Category: {transaction.category}
-                                </div>
+                                <div>Recipient: {transaction.recipient}</div>
+                                <div>Category: {transaction.category}</div>
                               </div>
                             </div>
                             <div className="col-span-2">
                               <h4 className="font-semibold">Notes</h4>
-                              <p className="mt-2">
-                                {transaction.notes}
-                              </p>
+                              <p className="mt-2">{transaction.notes}</p>
                             </div>
                           </div>
                         </DialogContent>
@@ -252,9 +239,7 @@ const TransactionsView = () => {
                         <DropdownMenuContent>
                           <DropdownMenuItem>Edit</DropdownMenuItem>
                           <DropdownMenuItem>Delete</DropdownMenuItem>
-                          <DropdownMenuItem>
-                            Download Receipt
-                          </DropdownMenuItem>
+                          <DropdownMenuItem>Download Receipt</DropdownMenuItem>
                           <DropdownMenuItem>Share</DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -282,7 +267,7 @@ const TransactionsView = () => {
         </div>
       </CardFooter>
     </Card>
-  )
-}
+  );
+};
 
-export default TransactionsView
+export default TransactionsView;

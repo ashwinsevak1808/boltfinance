@@ -1,6 +1,6 @@
   import { motion } from 'framer-motion';
 
-  const Logo = ({ width = 80, height = 80 }) => {
+  const Logo = ({ width = 80, height = 80, innerWidth = 48, innerHeight = 48 }) => {
     return (
       <motion.div
         initial={{ scale: 0.8, opacity: 0, rotate: -180 }}
@@ -25,7 +25,7 @@
             repeatType: "reverse",
             ease: "easeInOut"
           }}
-          className="w-[48px] h-[48px] rounded-[100%] bg-white border-[#DFE1E7] shadow-[0px_1px_2px_0px_#0D0D120F] relative"
+          className={`w-[${innerWidth}px] h-[${innerHeight}px] rounded-[100%] bg-white border-[#DFE1E7] shadow-[0px_1px_2px_0px_#0D0D120F] relative`}
         >
           <motion.div
             initial={{ opacity: 0, y: 10 }}

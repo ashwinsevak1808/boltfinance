@@ -178,7 +178,7 @@ export default function OTPVerificationPage() {
               OTP is valid for 30 minutes
             </p>
             <p className="text-muted-foreground text-xs text-center">
-              Didn't receive the OTP? Check your spam folder
+              Didn&#39;t receive the OTP? Check your spam folder
             </p>
           </CardFooter>
         </Card>

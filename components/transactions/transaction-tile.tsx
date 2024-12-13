@@ -30,6 +30,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 export default function TransactionTile(
   transaction: {
@@ -66,7 +67,7 @@ export default function TransactionTile(
       <TableCell>
         <div className="flex items-center">
           {transaction[0].paymentMethod === "GPay" && (
-            <img src="/gpay-icon.png" alt="GPay" className="w-4 h-4 mr-2" />
+            <Image src="/gpay-icon.png" alt="GPay" className="w-4 h-4 mr-2" />
           )}
           {transaction[0].paymentMethod}
         </div>

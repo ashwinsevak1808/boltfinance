@@ -30,8 +30,7 @@ export default function DashboardPage() {
 
   const handleCongratsComplete = () => {
     setIsFirstTimeUser(false);
-    // Optional: You might want to set a flag in localStorage
-    // to remember that the user has seen the congrats screen
+
     localStorage.setItem("isFirstTimeUser", "false");
   };
   return (
@@ -98,14 +97,4 @@ export default function DashboardPage() {
   );
 }
 
-// export default function DashboardPage() {
-//   return (
-//     <>
-//       <div className="min-h-screen bg-background h-screen overflow-hidden">
-//         <Header />
 
-//         <main className="container-fluid mx-auto px-4 py-6"></main>
-//       </div>
-//     </>
-//   );
-// }

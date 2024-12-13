@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useLayoutEffect } from "react"
 import { Plus, Upload, Filter, Eye, Download, MoreHorizontal, Copy, TrendingUp } from "lucide-react"
 import { Bar, BarChart, XAxis, YAxis } from "recharts"
 import {
@@ -72,9 +72,7 @@ export default function TransactionsPage() {
     const [totalBalance, setTotalBalance] = useState(0)
     const transactionsPerPage = 5
 
-    useEffect(() => {
-        fetchTransactions()
-    }, [currentPage])
+
 
     const fetchTransactions = async () => {
         try {
@@ -174,7 +172,7 @@ export default function TransactionsPage() {
                         </CardHeader>
                         <CardContent>
                             <div className="mb-6">
-                                <h3 className="font-semibold mb-3">Today's Transactions</h3>
+                                <h3 className="font-semibold mb-3">Today&#39;s Transactions</h3>
                                 <Table>
                                     <TableHeader>
                                         <TableRow>

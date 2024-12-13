@@ -42,7 +42,11 @@ const Logo = () => {
   );
 };
 
-const FirstTimeCongrats = ({ onComplete }) => {
+type FirstTimeCongratsProps = {
+  onComplete: () => void; 
+};
+
+const FirstTimeCongrats : React.FC<FirstTimeCongratsProps> =({ onComplete }) => {
   const [countdown, setCountdown] = useState(10);
   const router = useRouter();
 
@@ -149,7 +153,7 @@ const FirstTimeCongrats = ({ onComplete }) => {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="text-muted-foreground mb-6"
         >
-          You've successfully created your account. Get ready to take control of your finances!
+          You&#39;ve successfully created your account. Get ready to take control of your finances!
         </motion.p>
 
         {/* Countdown */}

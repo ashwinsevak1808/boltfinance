@@ -1,91 +1,123 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
-  AudioWaveform,
-  BookOpen,
-  Bot,
-  Command,
-  Frame,
-  GalleryVerticalEnd,
-  Map,
   PieChart,
   Settings2,
-  SquareTerminal,
-} from "lucide-react"
+  LayoutDashboard,
+  BookOpen,
+  CreditCard,
+  BarChart,
+  PiggyBank,
+  DollarSign,
+  ChevronRight,
+  Users,
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
-import { NavProjects } from "@/components/nav-projects"
-import { NavUser } from "@/components/nav-user"
-import { TeamSwitcher } from "@/components/team-switcher"
+import { NavMain } from "@/components/nav-main";
+import { NavProjects } from "@/components/nav-projects";
+import { TeamSwitcher } from "@/components/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import Card from "./layout/common/card";
+import { HeaderUser } from "./nav-user";
 
 // This is sample data.
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "Ashwin Sevak",
+    email: "ashwinsevak2091@gmail.com",
+    avatar: "/avatars/johndoe.jpg",
   },
   teams: [
     {
-      name: "Acme Inc",
-      logo: GalleryVerticalEnd,
-      plan: "Enterprise",
-    },
-    {
-      name: "Acme Corp.",
-      logo: AudioWaveform,
-      plan: "Startup",
-    },
-    {
-      name: "Evil Corp.",
-      logo: Command,
+      name: "Personal",
+      logo: PiggyBank,
       plan: "Free",
+    },
+    {
+      name: "Family Budget",
+      logo: Users,
+      plan: "Premium",
     },
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Dashboard",
       url: "#",
-      icon: SquareTerminal,
+      icon: LayoutDashboard,
       isActive: true,
+      items: [],
+    },
+    {
+      title: "Transactions",
+      url: "#",
+      icon: CreditCard,
       items: [
         {
-          title: "History",
+          title: "Recent",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Recurring",
           url: "#",
         },
         {
-          title: "Settings",
+          title: "Categories",
           url: "#",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Reports",
       url: "#",
-      icon: Bot,
+      icon: BarChart,
       items: [
         {
-          title: "Genesis",
+          title: "Monthly",
           url: "#",
         },
         {
-          title: "Explorer",
+          title: "Yearly",
           url: "#",
         },
         {
-          title: "Quantum",
+          title: "Custom",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Budget",
+      url: "#",
+      icon: PieChart,
+      items: [
+        {
+          title: "Create Budget",
+          url: "#",
+        },
+        {
+          title: "Track Progress",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Savings Goals",
+      url: "#",
+      icon: DollarSign,
+      items: [
+        {
+          title: "New Goal",
+          url: "#",
+        },
+        {
+          title: "Active Goals",
           url: "#",
         },
       ],
@@ -96,19 +128,11 @@ const data = {
       icon: BookOpen,
       items: [
         {
-          title: "Introduction",
+          title: "Getting Started",
           url: "#",
         },
         {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
+          title: "FAQs",
           url: "#",
         },
       ],
@@ -119,11 +143,7 @@ const data = {
       icon: Settings2,
       items: [
         {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
+          title: "Profile",
           url: "#",
         },
         {
@@ -131,7 +151,7 @@ const data = {
           url: "#",
         },
         {
-          title: "Limits",
+          title: "Notifications",
           url: "#",
         },
       ],
@@ -139,37 +159,40 @@ const data = {
   ],
   projects: [
     {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
+      name: "Track Spending",
       url: "#",
       icon: PieChart,
     },
     {
-      name: "Travel",
+      name: "Save for Vacation",
       url: "#",
-      icon: Map,
+      icon: PiggyBank,
+    },
+    {
+      name: "Emergency Fund",
+      url: "#",
+      icon: DollarSign,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
+      <Card className="m-4 h-full  overflow-hidden">
       <SidebarHeader>
-        <TeamSwitcher teams={data.teams} />
+      <HeaderUser user={data.user} />
+        {/* <TeamSwitcher teams={data.teams} /> */}
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
         <NavProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <HeaderUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
+      </Card>
     </Sidebar>
-  )
+  );
 }

@@ -53,7 +53,7 @@ export default async function RootLayout({
           "min-h-screen bg-background antialiased"
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           {children}
           <Toaster />
           <Sonner />
